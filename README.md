@@ -1,78 +1,77 @@
-# ChurnIQ – Customer Churn Prediction API
+# ChurnIQ – Customer Churn Prediction App
 
-ChurnIQ is a lightweight FastAPI-based prototype that predicts customer churn likelihood using behavioral data. It uses logistic regression to generate churn probabilities and serves predictions via a RESTful API with interactive Swagger UI.
+ChurnIQ is a full-stack churn prediction application that combines a Python/FastAPI backend with a React/TypeScript frontend. A logistic regression model (via scikit-learn) is used to predict churn probability based on customer behavior, exposed via a RESTful API. The React UI allows users to input behavior data and view live model predictions.
 
 ## 🔍 Features
-- Trains a logistic regression model using customer behavior metrics
-- Returns churn probability via a `/predict_churn` endpoint
-- Fully containerized with Docker
-- Swagger UI and curl/Postman-friendly
+- Logistic regression churn model trained on real data
+- FastAPI backend exposing prediction endpoint
+- React + TypeScript UI for input and results display
+- CORS-enabled API for local dev
+- Swagger UI for exploring the API
+- Docker-ready backend
 
 ## 📁 Project Structure
+
 ```
 churniq/
-├── app/
-│   ├── churn_data.csv
-│   ├── churn_model.py
-│   ├── api.py
+├── app/                    # FastAPI backend
+│   ├── api.py              # Main app with routes + CORS
+│   ├── churn_model.py      # Model training script
+│   └── churn_data.csv      # Sample training data
+├── ui/                     # React frontend (TypeScript)
+│   ├── src/
+│   │   └── App.tsx         # UI to call API and show result
+│   └── package.json
 ├── requirements.txt
 ├── Dockerfile
-├── .dockerignore
 ├── .gitignore
-├── .env
 └── README.md
 ```
 
-## ⚙️ Local Setup
+## ⚙️ Backend Setup (FastAPI)
 
-### 1. Create and activate virtual environment
+1. Create a virtual environment and activate it
 ```bash
 python -m venv .venv
-source .venv/Scripts/activate     # Git Bash on Windows
+source .venv/Scripts/activate     # On Windows Git Bash
 ```
 
-### 2. Install requirements
+2. Install dependencies
 ```bash
-pip install --upgrade pip
-pip install --force-reinstall -r requirements.txt
+pip install -r requirements.txt
 ```
 
-### 3. Train the model
+3. Train the model
 ```bash
 python app/churn_model.py
 ```
 
-### 4. Start the API server
+4. Start the API server
 ```bash
 uvicorn app.api:app --reload
 ```
 
-Then visit: [http://localhost:8000/docs](http://localhost:8000/docs)
+Visit: [http://localhost:8000/docs](http://localhost:8000/docs)
 
 ---
 
-## 🐳 Docker Setup
+## 🖥 Frontend Setup (React + TypeScript)
 
-### 1. Build the Docker image
 ```bash
-docker build -t churniq .
+cd ui
+npm install
+npm start
 ```
 
-### 2. Run the container
-```bash
-docker run -p 8000:8000 churniq
-```
+App runs at [http://localhost:3000](http://localhost:3000)
 
-Then open: [http://localhost:8000/docs](http://localhost:8000/docs)
+Ensure backend is running at `http://localhost:8000`
 
 ---
 
-## 🔮 API Details
+## 🔮 API Example
 
-**POST** `/predict_churn`  
-Returns churn probability for a customer.
-
-### Sample Request
+**POST** `/predict_churn`
 ```json
 {
   "age": 30,
@@ -81,28 +80,23 @@ Returns churn probability for a customer.
 }
 ```
 
-### Sample Response
+**Response**
 ```json
 {
   "churn_probability": 0.435
 }
 ```
 
-### Curl Example
-```bash
-curl -X POST http://localhost:8000/predict_churn \
--H "Content-Type: application/json" \
--d '{"age": 30, "subscription_months": 12, "login_freq": 5}'
-```
+---
+
+## 🧠 Tech Stack
+
+**Backend:** Python · FastAPI · scikit-learn · pandas · Swagger · CORS  
+**Frontend:** React · TypeScript · Fetch API  
+**Infrastructure:** Docker  
+**ML:** Logistic Regression · AI/ML
 
 ---
 
-## 🔧 Tech Stack
-Python · FastAPI · scikit-learn · pandas · Uvicorn · Docker · Swagger (OpenAPI)
-
----
-
-## 🧠 Next Steps
-- Add PostgreSQL for prediction storage
-- Implement scheduled model retraining
-- Expand to support tiered churn risk levels (Low / Medium / High)
+## 🚀 Next Steps
+- Add database persistence (PostgreSQL)
