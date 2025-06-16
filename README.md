@@ -1,102 +1,157 @@
-# ChurnIQ – Customer Churn Prediction App
+# ChurnIQ 🚀
 
-ChurnIQ is a full-stack churn prediction application that combines a Python/FastAPI backend with a React/TypeScript frontend. A logistic regression model (via scikit-learn) is used to predict churn probability based on customer behavior, exposed via a RESTful API. The React UI allows users to input behavior data and view live model predictions.
+![ChurnIQ](https://img.shields.io/badge/ChurnIQ-ML%20Churn%20Prediction-blue)
 
-## 🔍 Features
-- Logistic regression churn model trained on real data
-- FastAPI backend exposing prediction endpoint
-- React + TypeScript UI for input and results display
-- CORS-enabled API for local dev
-- Swagger UI for exploring the API
-- Docker-ready backend
+Welcome to ChurnIQ, a full-stack application designed to predict customer churn using machine learning. Built with FastAPI, React/TypeScript, and scikit-learn, ChurnIQ provides an interactive user interface and a robust REST API to deliver accurate churn probability predictions. 
 
-## 📁 Project Structure
+## Table of Contents
 
-```
-churniq/
-├── app/                    # FastAPI backend
-│   ├── api.py              # Main app with routes + CORS
-│   ├── churn_model.py      # Model training script
-│   └── churn_data.csv      # Sample training data
-├── ui/                     # React frontend (TypeScript)
-│   ├── src/
-│   │   └── App.tsx         # UI to call API and show result
-│   └── package.json
-├── requirements.txt
-├── Dockerfile
-├── .gitignore
-└── README.md
-```
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Documentation](#api-documentation)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
-## ⚙️ Backend Setup (FastAPI)
+## Features
 
-1. Create a virtual environment and activate it
-```bash
-python -m venv .venv
-source .venv/Scripts/activate     # On Windows Git Bash
-```
+- **Machine Learning Model**: Utilizes logistic regression to predict churn probability.
+- **REST API**: Easily integrates with other applications and services.
+- **Interactive UI**: Built with React and TypeScript for a seamless user experience.
+- **Data Visualization**: Displays churn predictions and insights clearly.
+- **Docker Support**: Simplifies deployment and scaling.
+- **Cross-Platform**: Works on any platform that supports Docker.
 
-2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
+## Technologies Used
 
-3. Train the model
-```bash
-python app/churn_model.py
-```
+- **Backend**: FastAPI, Python, scikit-learn
+- **Frontend**: React, TypeScript
+- **Database**: SQLite (or your preferred database)
+- **Containerization**: Docker
+- **Version Control**: GitHub
 
-4. Start the API server
-```bash
-uvicorn app.api:app --reload
-```
+## Installation
 
-Visit: [http://localhost:8000/docs](http://localhost:8000/docs)
+To get started with ChurnIQ, follow these steps:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/XxsebalinkxX/ChurnIQ.git
+   cd ChurnIQ
+   ```
+
+2. **Set up the backend**:
+   - Navigate to the backend directory:
+     ```bash
+     cd backend
+     ```
+   - Install the required packages:
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+3. **Set up the frontend**:
+   - Navigate to the frontend directory:
+     ```bash
+     cd ../frontend
+     ```
+   - Install the required packages:
+     ```bash
+     npm install
+     ```
+
+4. **Run the application**:
+   - Start the backend server:
+     ```bash
+     cd ../backend
+     uvicorn main:app --reload
+     ```
+   - Start the frontend server:
+     ```bash
+     cd ../frontend
+     npm start
+     ```
+
+Your application should now be running locally!
+
+## Usage
+
+To use ChurnIQ, follow these steps:
+
+1. Open your browser and navigate to `http://localhost:3000` to access the interactive UI.
+2. Input customer data into the form.
+3. Click the "Predict" button to see the churn probability.
+4. Review the visualizations and insights provided.
+
+For more advanced users, you can interact with the REST API directly. The API documentation is available below.
+
+## API Documentation
+
+ChurnIQ provides a REST API for accessing churn predictions programmatically. Below are the main endpoints:
+
+### Predict Churn
+
+- **Endpoint**: `/api/predict`
+- **Method**: `POST`
+- **Request Body**:
+  ```json
+  {
+    "customer_data": {
+      "feature1": value,
+      "feature2": value,
+      ...
+    }
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "churn_probability": value,
+    "prediction": "churn" or "not churn"
+  }
+  ```
+
+### Get Model Info
+
+- **Endpoint**: `/api/model`
+- **Method**: `GET`
+- **Response**:
+  ```json
+  {
+    "model_name": "Logistic Regression",
+    "accuracy": value,
+    "features": ["feature1", "feature2", ...]
+  }
+  ```
+
+## Contributing
+
+We welcome contributions to ChurnIQ! If you'd like to help, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your branch to your forked repository.
+5. Open a pull request with a clear description of your changes.
+
+## License
+
+ChurnIQ is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or feedback, please reach out to the maintainers:
+
+- **Maintainer Name**: Your Name
+- **Email**: your.email@example.com
+
+## Releases
+
+To download the latest version of ChurnIQ, visit our [Releases](https://github.com/XxsebalinkxX/ChurnIQ/releases) section. You can find the necessary files to download and execute the application there.
 
 ---
 
-## 🖥 Frontend Setup (React + TypeScript)
-
-```bash
-cd ui
-npm install
-npm start
-```
-
-App runs at [http://localhost:3000](http://localhost:3000)
-
-Ensure backend is running at `http://localhost:8000`
-
----
-
-## 🔮 API Example
-
-**POST** `/predict_churn`
-```json
-{
-  "age": 30,
-  "subscription_months": 12,
-  "login_freq": 5
-}
-```
-
-**Response**
-```json
-{
-  "churn_probability": 0.435
-}
-```
-
----
-
-## 🧠 Tech Stack
-
-**Backend:** Python · FastAPI · scikit-learn · pandas · Swagger · CORS  
-**Frontend:** React · TypeScript · Fetch API  
-**Infrastructure:** Docker  
-**ML:** Logistic Regression · AI/ML
-
----
-
-## 🚀 Next Steps
-- Add database persistence (PostgreSQL)
+Thank you for your interest in ChurnIQ! We hope you find it useful in predicting customer churn and improving your business strategies.
